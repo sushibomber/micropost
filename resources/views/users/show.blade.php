@@ -7,7 +7,8 @@
         </aside>
         <div class="col-sm-8">
             @include('users.navtabs', ['user' => $user])
-            @if (Auth::id() == $user->id)
+            
+            @if (Auth::id() == $user->id)  {{--//ログインidと$userが一緒だったらpost欄が出てくる仕様　他人のprofileでは表示されない--}}
                 {!! Form::open(['route' => 'microposts.store']) !!}
                     <div class="form-group">
                         {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}

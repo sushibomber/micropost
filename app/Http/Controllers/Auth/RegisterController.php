@@ -20,7 +20,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers;    //トレイト（いくつかのmethodをまとめているだけ）。このファイルは、RegistersUsersで定義されているメソッドをそのまま使用できる。web.phpのrouteはここに飛ばされる。
 
     /**
      * Where to redirect users after registration.

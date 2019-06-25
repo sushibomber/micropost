@@ -8,6 +8,7 @@
             </aside>
             <div class="col-sm-8">
                 @if (Auth::id() == $user->id)
+            
                     {!! Form::open(['route' => 'microposts.store']) !!}
                         <div class="form-group">
                             {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
@@ -24,6 +25,9 @@
         <div class="center jumbotron">
             <div class="text-center">
                 <h1>Welcome to the Microposts</h1>
+                
+                
+                
                 {!! link_to_route('signup.get', 'Sign up now!', [], ['class' => 'btn btn-lg btn-primary']) !!}
             </div>
         </div>

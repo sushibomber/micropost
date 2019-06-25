@@ -1,6 +1,6 @@
 @if (count($users) > 0)
     <ul class="list-unstyled">
-        @foreach ($users as $user)
+        @foreach ($users as $user)    {{--//$usersには、自分をフォローしてくれた人・自分がフォローした人の一覧が情報として入っている　--}}
             <li class="media">
                 <img class="mr-2 rounded" src="{{ Gravatar::src($user->email, 50) }}" alt="">
                 <div class="media-body">

@@ -28,7 +28,7 @@ class UsersController extends Controller
             'microposts' => $microposts,
         ];
 
-        $data += $this->counts($user);
+        $data += $this->counts($user);      //$data = $data + $this->count($user);という意味　$thisはUserContorollerという意味
 
         return view('users.show', $data);
     }
