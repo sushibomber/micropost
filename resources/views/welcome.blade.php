@@ -7,17 +7,20 @@
                 @include('users.card', ['user' => Auth::user()])
             </aside>
             <div class="col-sm-8">
+             @include('users.navtabs' , ['user' => Auth::user()])
+             
                 @if (Auth::id() == $user->id)
             
-                    {!! Form::open(['route' => 'microposts.store']) !!}
+                    {!! Form::open(['route' => 'microposts.store' , 'files' => true]) !!}    {{--送信内容はMicropostsController.phpの@storeへ--}}
                         <div class="form-group">
-                            {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
+                            {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}  {{--文字を保存ときにcontentというデータになる。ポストした内容は、$requestの中にあるcontentという変数に入って、mcropostcontrollerに送られる。--}}
+                            {!! Form::file('image', null) !!}
                             {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
                         </div>
                     {!! Form::close() !!}
                 @endif
                 @if (count($microposts) > 0)
-                    @include('microposts.microposts', ['microposts' => $microposts])
+                    @include('microposts.microposts', ['microposts' => $microposts , 'pictures' => $pictures])  {{--microposts.bladeの情報を取得する　+　$micropostsと$picturesの情報をmicroposts.bladeに渡す--}}
                 @endif
             </div>
         </div>

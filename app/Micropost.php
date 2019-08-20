@@ -10,6 +10,11 @@ class Micropost extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class); //belongstoでuserモデルclassの呼び出し。
+        return $this->belongsTo(User::class); //belongsToでuserモデルclassの呼び出し。micropostクラスと、userクラスを紐づけている。
+    }
+    
+    public function picture()
+    {
+        return $this->hasOne(Picture::class);  //micropostクラスとpictureクラスを紐づける。
     }
 }

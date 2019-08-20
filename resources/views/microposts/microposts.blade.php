@@ -1,6 +1,6 @@
 <ul class="media-list">
-    @foreach ($microposts as $micropost)
-     
+    @foreach ($microposts as $micropost) {{--配列から変数が取り出される（=レコードは1つずつ取り出される）--}}
+
         <li class="media mb-3">
             <img class="mr-2 rounded" src="{{ Gravatar::src($micropost->user->email, 50) }}" alt="">    {{--//userはMicroposts.php--}}
             <div class="media-body">
@@ -9,6 +9,19 @@
                 </div>
                 <div>
                     <p class="mb-0">{!! nl2br(e($micropost->content)) !!}</p>
+                    @foreach ($pictures->get() as $picture)
+                    
+                    
+                    
+                      @if($micropost->id == $picture->micropost_id)
+                        <img src="/storage/{{$picture->img_path}}" />
+                      @endif
+                    @endforeach
+                    
+                    
+                    
+                    
+                    
                 </div>
                 <div>
                 {{-- 自分が投稿したpostの場合  --}}

@@ -35,13 +35,15 @@ Route::group(['middleware' => ['auth']], function () {
     
     
     // 追加
-    Route::group(['prefix' => 'microposts/{id}'], function () {    //prefixはルートを表す　microposts/idというurlでアクセスすると、postなら39行目、deleteなら40行目が機能する。
+    Route::group(['prefix' => 'microposts/{id}'], function () {    //prefixはルートを表す　microposts/idというurlでアクセスすると、post、deleteが機能する。
         Route::post('favorite', 'FavoritesController@store')->name('favorites.favorite');    //お気に入りボタンを押すと機能する　FavoritesController@storeに飛ばす　microposts/id=post/id？　　　→　FavoritesControllerを作成する必要がある
         Route::delete('unfavorite', 'FavoritesController@destroy')->name('favorites.unfavorite');
         Route::get('get_favorite', 'FavoritesController@get_favorites')->name('favorites.get_favorites');
     });
 
     
-    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]); //MicropostsControllerのdestroymethodに飛ぶという意味
+    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]); //MicropostsControllerのstoreかdestroymethodに飛ぶという意味
+    
+    
 });
 
